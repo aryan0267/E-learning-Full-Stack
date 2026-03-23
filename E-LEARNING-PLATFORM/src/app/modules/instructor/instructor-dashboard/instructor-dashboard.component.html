@@ -1,0 +1,82 @@
+<app-instructor-navbar></app-instructor-navbar>
+
+<div class="main-container">
+
+    <!-- Header Banner -->
+    <div class="header-banner">
+        <div class="banner-content">
+            <h2 class="title">Welcome back, {{selectedInstructorName}}</h2>
+            <p class="subtitle">Manage your courses and track performance.</p>
+        </div>
+        <div class="action-buttons">
+            <button class="action-btn primary" routerLink="add-assessment">
+                <i class="fas fa-plus-circle"></i> Create Assessment
+            </button>
+            <button class="action-btn primary" routerLink="announcements/create">
+                <i class="fas fa-bullhorn"></i> Create Announcement
+            </button>
+            <button class="action-btn primary" 
+                    [routerLink]="['/instructor/add-course']" 
+                    [queryParams]="{ instructorId: instructorId }">
+                <i class="fas fa-chalkboard-teacher"></i> Create Course
+            </button>
+        </div>
+    </div>
+
+    <!-- My Courses Section -->
+    <div class="content-section">
+        <h3 class="section-title">My Courses ({{ courses.length }})</h3>
+
+        <!-- Course Cards Grid -->
+        <div class="course-grid" *ngIf="courses.length > 0">
+            <div class="course-col" *ngFor="let course of courses">
+                <div class="course-card">
+                    <!-- Thumbnail -->
+                    <div class="thumbnail-container">
+                        <img *ngIf="course.thumbnail" 
+                             [src]="'http://localhost:8080/' + course.thumbnail" 
+                             class="card-thumbnail" 
+                             alt="{{ course.title }} thumbnail" />
+                        <div *ngIf="!course.thumbnail" class="thumbnail-placeholder">
+                            Course Image Not Available
+                        </div>
+                    </div>
+                    
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <!-- Level Badge -->
+                        <span class="level-badge beginner" *ngIf="course.level === 'Beginner'">{{ course.level }}</span>
+                        <span class="level-badge intermediate" *ngIf="course.level === 'Intermediate'">{{ course.level }}</span>
+                        <span class="level-badge advanced" *ngIf="course.level === 'Advanced'">{{ course.level }}</span>
+                        
+                        <h4 class="course-title">{{ course.title}}</h4>
+                        <p class="course-description">{{ course.description | slice:0:100 }}...</p>
+
+                        <!-- Meta Info -->
+                        <div class="meta-info">
+                            <small class="duration-info">
+                                <i class="far fa-clock"></i> {{ course.durationHrs }} hrs
+                            </small>
+                            <small class="rating-info">
+                                <i class="fas fa-star"></i> {{ course.avgRating || 'N/A' }} 
+                                ({{ course.studentsCount || 0 }})
+                            </small>
+                        </div>
+                        
+                        <!-- Actions -->
+                        <div class="card-actions">
+                            <button class="edit-btn" routerLink="add-course">
+                                <i class="fas fa-edit"></i> Edit Course
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="courses.length === 0" class="empty-state">
+            <i class="fas fa-info-circle"></i>
+            You haven’t created any courses yet. Click "Create Course" to get started!
+        </div>
+    </div>
+</div>

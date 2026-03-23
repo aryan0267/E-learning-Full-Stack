@@ -1,0 +1,88 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4 mb-4">
+  <a class="navbar-brand fw-bold text-primary d-flex align-items-center" [routerLink]="['/student']"
+          >
+    <i class="bi bi-mortarboard me-2" ></i> INCO LEARN
+  </a>
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#studentNav"
+    aria-controls="studentNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="studentNav">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item mx-2">
+        <a class="nav-link active d-flex align-items-center" [routerLink]="['/student']"
+           [queryParams]="{ studentId: selectedStudentId }">
+          <i class="bi bi-bar-chart-fill me-1"></i> Dashboard
+        </a>
+      </li>
+      <li class="nav-item mx-2">
+        <a class="nav-link d-flex align-items-center" [routerLink]="['/student/courses']"
+           [queryParams]="{ studentId: selectedStudentId }">
+          <i class="bi bi-collection-fill me-1"></i> Browse Courses
+        </a>
+      </li>
+
+      <li class="nav-item mx-2">
+        <a class="nav-link d-flex align-items-center" [routerLink]="['/student/assessment-marks']"
+          [queryParams]="{ studentId: selectedStudentId }">
+          <i class="bi bi-list-check me-1"></i> Assessment History
+        </a>
+      </li>
+
+      
+      <li class="nav-item mx-2 position-relative">
+        <a class="nav-link d-flex align-items-center" [routerLink]="['/student/notifications']"
+          [queryParams]="{ studentId: selectedStudentId }">
+          <i class="bi bi-bell-fill me-1"></i> Notifications
+          <span *ngIf="unreadCount > 0"
+                class="badge bg-danger rounded-pill ms-1"
+                style="position: relative; top: -2px;">
+            {{ unreadCount }}
+          </span>
+        </a>
+      </li>
+
+      <!-- payment related -->
+      <!-- <li class="nav-item mx-2">
+        <a class="nav-link d-flex align-items-center"  [routerLink]="['payments']"
+                [queryParams]="{ studentId: selectedStudentId }">
+          <i class="bi bi-bell-fill me-1"></i>Payment History
+      </a>
+      </li> -->
+    </ul>
+
+    <ul class="navbar-nav ms-auto">
+
+      <div class="nav-profile"
+     (mouseenter)="openDropdown()"
+     (mouseleave)="closeDropdown()">
+
+  <div class="avatar">{{ initials }}</div>
+
+  <div class="profile-dropdown" 
+       *ngIf="dropdownVisible"
+       (mouseenter)="keepOpen()"
+       (mouseleave)="closeDropdown()">
+
+    <div class="pd-header">
+      <div class="avatar large">{{ initials }}</div>
+      <div class="text-info" >
+        <strong style="color:#000;" >{{ user.fullName }}</strong> <br>
+        <small style="color:#000;" >{{ user.email }}</small>
+      </div>
+    </div>
+
+    <hr>
+
+    <button class="pd-btn" (click)="goToProfile()">Profile</button>
+    <button class="pd-btn" (click)="logout()">Logout</button>
+
+  </div>
+
+</div>
+</ul>
+</div>
+</nav>
+

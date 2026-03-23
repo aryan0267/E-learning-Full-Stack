@@ -1,0 +1,289 @@
+/* Global setup */
+:host {
+    display: block;
+    background-color: #f4f7fa; /* Light background for the whole page */
+    min-height: 100vh;
+    padding-bottom: 50px;
+    font-family: 'Poppins', sans-serif;
+    color: #1a202c;
+}
+
+.main-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* -------------------- Header Banner -------------------- */
+.header-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 40px;
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, #1e90ff, #50b0ff); /* Primary Blue Gradient */
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(30, 144, 255, 0.3); /* Soft shadow */
+    transition: all 0.3s ease-in-out;
+}
+
+.banner-content .title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.banner-content .subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.action-btn {
+    background-color: #ffffff;
+    color: #1e90ff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn:hover {
+    background-color: #f0f8ff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.action-btn i {
+    margin-right: 8px;
+}
+
+/* -------------------- Courses Section -------------------- */
+.content-section {
+    padding: 10px;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1e90ff;
+    margin-bottom: 25px;
+    border-left: 5px solid #1e90ff;
+    padding-left: 15px;
+    line-height: 1;
+}
+
+/* -------------------- Course Grid and Card Styling -------------------- */
+
+.course-grid {
+    display: grid;
+    /* Responsive grid: Min width of 300px per column */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
+}
+
+.course-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    /* Elevated shadow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hover Effect */
+.course-card:hover {
+    transform: translateY(-8px); /* Lift the card up */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+}
+
+.thumbnail-container {
+    height: 180px;
+    overflow: hidden;
+    background-color: #e2e8f0;
+    border-bottom: 1px solid #eef2f5;
+}
+
+.card-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.course-card:hover .card-thumbnail {
+    transform: scale(1.05); /* Slight zoom on image hover */
+}
+
+.thumbnail-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #64748b;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Ensures body expands to fill height */
+}
+
+.course-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 5px 0 8px 0;
+    color: #1a202c;
+}
+
+.course-description {
+    font-size: 0.9rem;
+    color: #4a5568;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+/* Level Badges (Custom Styling) */
+.level-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.level-badge.beginner {
+    background-color: #d1fae5; /* Green 100 */
+    color: #065f46; /* Green 800 */
+}
+
+.level-badge.intermediate {
+    background-color: #fef3c7; /* Yellow 100 */
+    color: #92400e; /* Yellow 800 */
+}
+
+.level-badge.advanced {
+    background-color: #fee2e2; /* Red 100 */
+    color: #991b1b; /* Red 800 */
+}
+
+/* Meta Info */
+.meta-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    margin-top: auto; /* Pushes meta info to the bottom */
+    border-top: 1px solid #f1f5f9;
+}
+
+.duration-info, .rating-info {
+    font-size: 0.85rem;
+    color: #718096;
+}
+
+.rating-info {
+    color: #f6ad55; /* Orange star color */
+    font-weight: 600;
+}
+
+.meta-info i {
+    margin-right: 5px;
+}
+
+/* Actions */
+.card-actions {
+    margin-top: 15px;
+}
+
+.edit-btn {
+    width: 100%;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+    background-color: #1c7ed6;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #ffffff;
+    border: 2px dashed #cbd5e0;
+    border-radius: 10px;
+    color: #4a5568;
+    font-size: 1.1rem;
+    margin-top: 30px;
+}
+
+.empty-state i {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 15px;
+    color: #1e90ff;
+}
+
+/* -------------------- Responsiveness -------------------- */
+
+@media (max-width: 992px) {
+    .header-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 25px;
+    }
+
+    .action-buttons {
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .action-btn {
+        flex: 1 1 auto; /* Allow buttons to wrap and fill space */
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-container {
+        padding: 10px;
+    }
+    .header-banner {
+        padding: 20px;
+    }
+    .banner-content .title {
+        font-size: 1.5rem;
+    }
+    .action-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .action-btn {
+        width: 100%;
+    }
+}

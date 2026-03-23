@@ -1,0 +1,21 @@
+.nav-link{
+    color: white;
+}
+
+.navbar{
+    align-items: center;
+    text-align: center;
+}
+
+a{
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular';
+    font-weight: bold;
+}
+.btn{
+    color: white;
+}
+.btn:hover{
+    background-color: white;
+    color: black;
+}

@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <h2 class="text-center mb-4">Available Assessments</h2>
+      <div class="row g-4" *ngIf="assessment | async as assessments">
+        <div class="col-md-6" *ngFor="let a of assessments">
+          <div class="card h-100 shadow-sm border-0 rounded-3">
+            <div class="card-body p-4">
+              <h5 class="card-title text-primary fw-bold">{{ a.title }}</h5>
+              <p class="card-text text-muted mb-3">{{ a.description }}</p>
+              <div class="d-grid mt-3">
+                <a class="btn btn-primary" [routerLink]="['/student/take-assessment', a.id]">
+                  Start Assessment 
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="assessments.length === 0" class="col-12 text-center text-muted mt-5">
+          <p>No assessments available at the moment.</p>
+        </div>
+      </div>
+      <div *ngIf="!(assessment | async)" class="text-center text-muted mt-5">
+        <p>Loading assessments...</p>
+      </div>
+    </div>
+  </div>
+</div>
